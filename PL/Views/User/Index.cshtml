@@ -1,0 +1,49 @@
+﻿@using BLL.DTO;
+@using System.Collections.Generic;
+@model List<TaskDTO>
+
+@if (Model.Count == 0)
+{
+    <h4>You Have not any tasks</h4>
+}
+else
+{
+<div class="container login col-12">
+    <h4 class="text-center font-weight-bold">Tasks List</h4>
+    <h6 class="text-center font-weight-bold"> @ViewBag.Message </h6>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="text-center font-weight-bold">Name</th>
+                <th class="text-center font-weight-bold">Deadline</th>
+                <th class="text-center font-weight-bold">Job Status</th>
+                <th class="text-center font-weight-bold"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="text-center ">
+                    <th>@item.Name</th>
+                    <th>@item.Deadline</th>
+                    @if (item.JobStatusId == 1)
+                    {
+                        <th><div class="container  col-lg-7 col-md-10 col-sm-11 col-xs-12 j1 j">In Progress</div></th>
+                    }
+                    else if (item.JobStatusId == 2)
+                    {
+                        <th><div class="container col-lg-7 col-md-10 col-sm-11 col-xs-12  j2 j">Not Started</div></th>
+                    }
+                    else
+                    {
+                        <th><div class="container  col-lg-7 col-md-10 col-sm-11 col-xs-12 j3 j">Completed</div></th>
+                    }
+                    <th><a asp-action="Task" asp-controller="User" asp-route-id="@item.Id">Details</a></th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}
+

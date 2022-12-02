@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PL</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container text-center">
+                <h5 class="Title">Task Tracking System</h5> 
+            </div>
+            <div class="container col-2">
+                <ul class="navbar-nav">
+                    @if (User.Claims.Count() == 0)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Account" asp-action="Register">Register</a>
+                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Login</a>
+                        </li>
+                    }else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark"  asp-controller="Account" asp-action="Logout">Logout</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="main container">
+        @RenderBody()
+    </div>
+    <footer class="border-top footer  text-muted">
+        <div class="container sm-12 text-center">
+            &copy; zheplinska@@gmail.com task tracking system 2021  
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

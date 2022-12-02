@@ -1,0 +1,66 @@
+﻿@using System.Collections.Generic;
+@using BLL.DTO
+
+@model IEnumerable<UserDTO>
+
+
+@if (Model == null)
+{
+<h4 class="text-center font-weight-bold"> There isn't any registered users </h4>
+}
+else
+{
+<div class="container login col-12">
+    <div class="form-group">
+        <input  type="text" id="search" placeholder="Enter search name" />
+    </div>
+
+    <h4 class="text-center font-weight-bold">Users List </h4>
+    <h6 class="text-center font-weight-bold"> @ViewBag.Message </h6>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="text-center font-weight-bold">Name</th>
+                <th class="text-center font-weight-bold">Age</th>
+                <th class="text-center font-weight-bold">Email</th>
+                <th class="text-center font-weight-bold">Role</th>
+                <th class="text-center font-weight-bold"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="text-center ">
+                    <td>@item.Name</td>
+                    <td>@item.Age</td>
+                    <td>@item.Email</td>
+                    <td>@item.RoleId</td>
+
+                    <th><a asp-action="Edit" asp-controller="Admin" asp-route-id="@item.Id">Manage User</a></th>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>$("#search").on("keyup", function () {
+
+            var search = $(this).val();
+            $("table > tbody > tr").each(function (index, tr) {
+
+                var td = $(this).find("td:first").text();
+                if (td.indexOf(search) !== 0 && td.toLowerCase().indexOf(search.toLowerCase()) < 0) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            })
+        })</script>
+    <div>
+        @Html.ActionLink("Create new Task", "CreateNewTask")
+    </div>
+    <div>
+        @Html.ActionLink("Tasks to check", "TasksToCheck")
+    </div>
+</div> 
+}

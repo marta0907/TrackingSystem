@@ -1,0 +1,34 @@
+﻿@model BLL.DTO.TaskDTO
+<div class="container register col-sm-8 col-md-6 col-lg-4">
+    <form asp-action="CheckTask" asp-controller="Admin" asp-route-id="@Model.Id">
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <h4 class="text-center font-weight-bold"> Check Task </h4>
+            <h6 class="text-center font-weight-bold"> @ViewBag.Message </h6>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Name</label>
+                <input hidden type="text" asp-for="Name" class="form-control" />
+            </div>
+            <div class="form-group ">
+                <p class="text-center font-weight-bold">@Model.Description</p>
+            </div>
+            <div class="form-group ">
+                <p class="text-center font-weight-bold">@Model.Answer</p>
+            </div>
+            <div class="form-group">
+                @Html.HiddenFor(x => x.Description)
+                @Html.HiddenFor(x => x.Answer)
+                @Html.HiddenFor(x => x.CategoryId)
+                @Html.HiddenFor(x => x.Deadline)
+                @Html.HiddenFor(x => x.JobStatusId)
+                @Html.HiddenFor(x => x.UserId)
+            </div>
+            <div class="form-group">
+                <label asp-for="Mark" class="control-label">Mark</label>
+                <input type="number" asp-for="Mark" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Save</button>
+        </div>
+    </form>
+</div>

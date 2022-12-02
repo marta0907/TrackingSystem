@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="DTO\" />
+    <None Remove="AutoMapper" />
+    <None Remove="Interfaces\" />
+    <None Remove="Services\" />
+    <None Remove="Validation\" />
+    <None Remove="Ninject" />
+    <None Remove="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="Ninject" Version="3.3.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.18" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DTO\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Services\" />
+    <Folder Include="Validation\" />
+  </ItemGroup>
+</Project>
